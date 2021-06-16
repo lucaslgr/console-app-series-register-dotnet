@@ -17,7 +17,7 @@ namespace DIO.Series
             this.Title = title;
             this.Description = description;
             this.Year = year;
-            this.Excluded = excluded;
+            this.Excluded = false;
         }
 
         public override string ToString()
@@ -38,6 +38,11 @@ namespace DIO.Series
         public int getId()
         {
             return this.Id;
+        }
+
+        public void delete()
+        {
+            this.Excluded = true;
         }
     }
 }
