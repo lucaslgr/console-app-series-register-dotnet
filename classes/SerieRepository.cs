@@ -9,7 +9,7 @@ namespace DIO.Series
 
         void IRepository<Serie>.Delete(int id)
         {
-            throw new System.NotImplementedException();
+            this.listSerie[id].delete();
         }
 
         Serie IRepository<Serie>.GetByID(int id)
