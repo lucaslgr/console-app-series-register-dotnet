@@ -27,5 +27,15 @@ namespace DIO.Series
             result += $"Ano de Início: {this.Year} {Environment.NewLine}";
             return result;
         }
+
+        public string getTitle()
+        {
+            return this.Title;
+        }
+
+        public int getId()
+        {
+            return this.Id;
+        }
     }
 }
