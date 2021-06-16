@@ -1,16 +1,19 @@
-public enum Name
+namespace DIO.Series
 {
-    Action = 1,
-    Adventure = 2,
-    Comedy = 3,
-    Documentary = 4,
-    Drama = 5,
-    Espionage = 6,
-    Western = 7,
-    Fantasy = 8,
-    ScienceFiction = 9,
-    Musical = 10,
-    Romance = 11,
-    Triller = 12,
-    Horror = 13,
+    public enum Gender
+    {
+        Action = 1,
+        Adventure = 2,
+        Comedy = 3,
+        Documentary = 4,
+        Drama = 5,
+        Espionage = 6,
+        Western = 7,
+        Fantasy = 8,
+        ScienceFiction = 9,
+        Musical = 10,
+        Romance = 11,
+        Triller = 12,
+        Horror = 13,
+    }
 }
