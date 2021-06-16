@@ -40,8 +40,6 @@ namespace DIO.Series
 
         public void printList()
         {
-            Console.WriteLine("--- Listar Séries ---");
-
             if (this.listSerie.Count == 0)
             {
                 Console.WriteLine("Nenhuma série cadastrada");

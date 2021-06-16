@@ -15,10 +15,10 @@ namespace DIO.Series
                 switch (userOption)
                 {
                     case "1":
-                        repository.List();
+                        listSeries();
                         break;
                     case "2":
-                        //repository.Insert("");
+                        insertSerie();
                         break;
                     case "3":
                         //
@@ -57,6 +57,41 @@ namespace DIO.Series
             string userOption = Console.ReadLine().ToUpper();
             Console.WriteLine();
             return userOption;
+        }
+
+        private static void listSeries()
+        {
+            Console.WriteLine("--- Listar Séries ---");
+            repository.printList();
+        }
+
+        private static void insertSerie()
+        {
+            Console.WriteLine("--- Inserir nova série ---");
+
+            foreach (var value in Enum.GetValues(typeof(Gender)))
+                Console.WriteLine($"{value} - ${Enum.GetName(typeof(Gender), value)}");
+
+            Console.Write("Digite o número respectivo ao gênero entre as opções acima: ");
+            int serieGender = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o título da série: ");
+            string serieTitle = Console.ReadLine();
+
+            Console.Write("Digite o número respectivo ao gênero entre as opções acima: ");
+            int serieYear = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite a descrição da série: ");
+            string serieDescription = Console.ReadLine();
+
+            Serie newSerie = new Serie(id: repository.NextID(),
+                                        gender: (Gender)serieGender,
+                                        title: serieTitle,
+                                        year: serieYear,
+                                        description: serieDescription
+            );
+
+            repository.Insert(newSerie);
         }
     }
 }
