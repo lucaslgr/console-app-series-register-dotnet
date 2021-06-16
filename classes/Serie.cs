@@ -1,3 +1,5 @@
+using System;
+
 namespace DIO.Series
 {
     public class Serie : BaseEntity
@@ -14,6 +16,16 @@ namespace DIO.Series
             this.Title = title;
             this.Description = description;
             this.Year = year;
+        }
+
+        public override string ToString()
+        {
+            string result = "";
+            result += $"Gênero: {this.Gender} {Environment.NewLine}";
+            result += $"Título: {this.Title} {Environment.NewLine}";
+            result += $"Descrição: {this.Description} {Environment.NewLine}";
+            result += $"Ano de Início: {this.Year} {Environment.NewLine}";
+            return result;
         }
     }
 }
