@@ -24,7 +24,7 @@ namespace DIO.Series
 
         List<Serie> IRepository<Serie>.List()
         {
-            throw new System.NotImplementedException();
+            return this.listSerie;
         }
 
         int IRepository<Serie>.NextID()
