@@ -19,7 +19,7 @@ namespace DIO.Series
 
         void IRepository<Serie>.Insert(Serie entity)
         {
-            throw new System.NotImplementedException();
+            this.listSerie.Add(entity);
         }
 
         List<Serie> IRepository<Serie>.List()
