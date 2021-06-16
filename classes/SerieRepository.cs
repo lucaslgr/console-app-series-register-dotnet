@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DIO.Series.Interfaces;
 
@@ -35,6 +36,22 @@ namespace DIO.Series
         public void Update(int id, Serie entity)
         {
             this.listSerie[id] = entity;
+        }
+
+        public void printList()
+        {
+            Console.WriteLine("--- Listar Séries ---");
+
+            if (this.listSerie.Count == 0)
+            {
+                Console.WriteLine("Nenhuma série cadastrada");
+                return;
+            }
+
+            foreach (var serie in this.listSerie)
+            {
+                Console.WriteLine($"#ID {serie.getId()} - {serie.getTitle()}");
+            }
         }
     }
 }

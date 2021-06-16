@@ -39,23 +39,6 @@ namespace DIO.Series
             }
         }
 
-        private static void ListSeries()
-        {
-            Console.WriteLine("--- Listar Séries ---");
-            var list = repository.List();
-
-            if (list.Count == 0)
-            {
-                Console.WriteLine("Nenhuma série cadastrada");
-                return;
-            }
-
-            foreach (var serie in list)
-            {
-                Console.WriteLine($"#ID {serie.getId()} - {serie.getTitle()}");
-            }
-        }
-
         private static string GetUserOption()
         {
             Console.WriteLine();
