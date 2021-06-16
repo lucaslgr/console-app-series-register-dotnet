@@ -4,9 +4,56 @@ namespace DIO.Series
 {
     class Program
     {
+        static SerieRepository repository = new SerieRepository();
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string userOption = GetUserOption();
+
+            while (userOption != "X")
+            {
+                switch (userOption)
+                {
+                    case "1":
+                        repository.List();
+                        break;
+                    case "2":
+                        //repository.Insert("");
+                        break;
+                    case "3":
+                        //
+                        break;
+                    case "4":
+                        //
+                        break;
+                    case "5":
+                        //
+                        break;
+                    case "6":
+                        Console.Clear();
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException("Opção inválida");
+                }
+            }
+        }
+
+        private static void ListSeries()
+        {
+            Console.WriteLine("--- Listar Séries ---");
+            var list = repository.List();
+
+            if (list.Count == 0)
+            {
+                Console.WriteLine("Nenhuma série cadastrada");
+                return;
+            }
+
+            foreach (var serie in list)
+            {
+                Console.WriteLine($"#ID {serie.getId()} - {serie.getTitle()}");
+            }
         }
 
         private static string GetUserOption()
