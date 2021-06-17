@@ -3,8 +3,10 @@ A simple console app of a series register developed in .NET for the GFT Bootcamp
 ## TODO - Tasks
 
 - [x] Insert a new serie on list
-- [x] Insert all series from the lists
-- [x] Insert a new serie on list
+- [x] Update a new serie on list
+- [x] Delete a serie from list
+- [x] List all series
+- [x] List an especific serie
 
 ## What have I learned?
 
