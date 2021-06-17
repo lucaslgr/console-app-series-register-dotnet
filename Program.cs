@@ -8,10 +8,11 @@ namespace DIO.Series
 
         static void Main(string[] args)
         {
-            string userOption = GetUserOption();
+            string userOption = "";
 
             while (userOption != "X")
             {
+                userOption = GetUserOption();
                 switch (userOption)
                 {
                     case "1":
@@ -21,13 +22,13 @@ namespace DIO.Series
                         insertSerie();
                         break;
                     case "3":
-                        //
+                        updateSerie();
                         break;
                     case "4":
-                        //
+                        deleteSerie();
                         break;
                     case "5":
-                        //
+                        showSerie();
                         break;
                     case "6":
                         Console.Clear();
@@ -69,20 +70,10 @@ namespace DIO.Series
         {
             Console.WriteLine("--- Inserir nova série ---");
 
-            foreach (var value in Enum.GetValues(typeof(Gender)))
-                Console.WriteLine($"{value} - ${Enum.GetName(typeof(Gender), value)}");
+            int serieGender, serieYear;
+            string serieTitle, serieDescription;
 
-            Console.Write("Digite o número respectivo ao gênero entre as opções acima: ");
-            int serieGender = int.Parse(Console.ReadLine());
-
-            Console.Write("Digite o título da série: ");
-            string serieTitle = Console.ReadLine();
-
-            Console.Write("Digite o número respectivo ao gênero entre as opções acima: ");
-            int serieYear = int.Parse(Console.ReadLine());
-
-            Console.Write("Digite a descrição da série: ");
-            string serieDescription = Console.ReadLine();
+            menuFillDataSerie(out serieGender, out serieTitle, out serieYear, out serieDescription);
 
             Serie newSerie = new Serie(id: repository.NextID(),
                                         gender: (Gender)serieGender,
@@ -92,6 +83,82 @@ namespace DIO.Series
             );
 
             repository.Insert(newSerie);
+        }
+
+        private static void updateSerie()
+        {
+            Console.WriteLine("--- Editar série ---");
+
+            Console.Write("Digite o número respectivo ao ID da série que deseja atualizar: ");
+            int serieId = int.Parse(Console.ReadLine());
+
+            int serieGender, serieYear;
+            string serieTitle, serieDescription;
+
+            menuFillDataSerie(out serieGender, out serieTitle, out serieYear, out serieDescription);
+
+            Serie newSerie = new Serie(id: repository.NextID(),
+                                        gender: (Gender)serieGender,
+                                        title: serieTitle,
+                                        year: serieYear,
+                                        description: serieDescription
+            );
+
+            repository.Update(serieId, newSerie);
+        }
+
+        static private void deleteSerie()
+        {
+            Console.WriteLine("--- Deletar série ---");
+
+            Console.Write("Digite o número respectivo ao ID da série que deseja excluir: ");
+            int serieId = int.Parse(Console.ReadLine());
+
+            if (askConfirmation())
+                return;
+
+            repository.Delete(serieId);
+        }
+
+        static private void showSerie()
+        {
+            Console.Write("Digite o número respectivo ao ID da série que deseja visualizar: ");
+            int serieId = int.Parse(Console.ReadLine());
+
+            Console.Write(repository.GetByID(serieId));
+        }
+
+        static private bool askConfirmation()
+        {
+            Console.WriteLine("Deseja mesmo executar essa ação? ");
+            Console.WriteLine("1 - Sim ");
+            Console.WriteLine("2 - Não ");
+            int userChoice = int.Parse(Console.ReadLine());
+
+            return (userChoice == 1);
+        }
+
+        private static void menuFillDataSerie(
+            out int serieGender,
+            out string serieTitle,
+            out int serieYear,
+            out string serieDescription
+        )
+        {
+            foreach (int i in Enum.GetValues(typeof(Gender)))
+                Console.WriteLine($"{i} - {Enum.GetName(typeof(Gender), i)}");
+
+            Console.Write("Digite o número respectivo ao gênero entre as opções acima: ");
+            serieGender = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o título da série: ");
+            serieTitle = Console.ReadLine();
+
+            Console.Write("Digite o ano que a série foi lançada: ");
+            serieYear = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite a descrição da série: ");
+            serieDescription = Console.ReadLine();
         }
     }
 }

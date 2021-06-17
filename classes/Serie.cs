@@ -27,6 +27,7 @@ namespace DIO.Series
             result += $"Título: {this.Title} {Environment.NewLine}";
             result += $"Descrição: {this.Description} {Environment.NewLine}";
             result += $"Ano de Início: {this.Year} {Environment.NewLine}";
+            result += $"Excluído: {(this.Excluded ? "Sim" : "Não")}";
             return result;
         }
 
@@ -38,6 +39,11 @@ namespace DIO.Series
         public int getId()
         {
             return this.Id;
+        }
+
+        public bool getExcluded()
+        {
+            return this.Excluded;
         }
 
         public void delete()
