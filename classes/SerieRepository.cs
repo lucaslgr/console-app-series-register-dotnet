@@ -47,7 +47,7 @@ namespace DIO.Series
             }
 
             foreach (var serie in this.listSerie)
-                Console.WriteLine($"#ID {serie.getId()} - {serie.getTitle()} - {(serie.getExcluded() ? "[Excluído]" : "")}");
+                Console.WriteLine($"#ID {serie.getId()} - {serie.getTitle()} {(serie.getExcluded() ? "- [Excluído]" : "")}");
         }
     }
 }

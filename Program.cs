@@ -33,6 +33,9 @@ namespace DIO.Series
                     case "6":
                         Console.Clear();
                         break;
+                    case "X":
+                        Console.WriteLine("--- Volte sempre! ---");
+                        break;
 
                     default:
                         throw new ArgumentOutOfRangeException("Opção inválida");
@@ -114,7 +117,7 @@ namespace DIO.Series
             Console.Write("Digite o número respectivo ao ID da série que deseja excluir: ");
             int serieId = int.Parse(Console.ReadLine());
 
-            if (askConfirmation())
+            if (!askConfirmation())
                 return;
 
             repository.Delete(serieId);
